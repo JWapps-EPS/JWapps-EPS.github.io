@@ -156,14 +156,8 @@
 function checkPassword() {
   const input = document.getElementById("pwd-input").value;
   if (input === MOT_DE_PASSE) {
+    window.location.href = targetUrl;
     closeModal();
-    const a = document.createElement('a');
-    a.href = targetUrl;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
   } else {
     document.getElementById("pwd-error").style.display = "block";
     document.getElementById("pwd-input").select();
