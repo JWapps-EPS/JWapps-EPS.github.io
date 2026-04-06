@@ -153,16 +153,22 @@
     targetUrl = "";
   }
 
-  function checkPassword() {
-    const input = document.getElementById("pwd-input").value;
-    if (input === MOT_DE_PASSE) {
-      closeModal();
-      window.open(targetUrl, "_blank");
-    } else {
-      document.getElementById("pwd-error").style.display = "block";
-      document.getElementById("pwd-input").select();
-    }
+function checkPassword() {
+  const input = document.getElementById("pwd-input").value;
+  if (input === MOT_DE_PASSE) {
+    closeModal();
+    const a = document.createElement('a');
+    a.href = targetUrl;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } else {
+    document.getElementById("pwd-error").style.display = "block";
+    document.getElementById("pwd-input").select();
   }
+}
 
   document.getElementById("overlay").addEventListener("click", function(e) {
     if (e.target === this) closeModal();
